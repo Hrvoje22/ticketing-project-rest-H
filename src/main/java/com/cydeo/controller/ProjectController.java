@@ -70,6 +70,7 @@ public class ProjectController {
     }
 
     @GetMapping("/manager/project-status")
+    @RolesAllowed("Manager")
     public ResponseEntity<ResponseWrapper> getProjectByManager(){
 
         List<ProjectDTO> projectDTOList = projectService.listAllProjectDetails();
@@ -78,6 +79,7 @@ public class ProjectController {
     }
 
     @PutMapping("manager/complete/{projectCode}")
+    @RolesAllowed("Manager")
     public ResponseEntity<ResponseWrapper> managerCompleteProject(@PathVariable("projectCode") String projectCode){
 
         projectService.complete(projectCode);
